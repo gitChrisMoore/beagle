@@ -17,7 +17,7 @@ export function TransactionsList() {
     const navigate = useNavigate()
 
     async function handleTxUpdate() {
-        const txs = await getTransactionsByStatus('FINAL')
+        const txs = await getTransactionsByStatus('PENDING_APPROVAL')
         setTransactions(txs)
     }
     
