@@ -1,26 +1,8 @@
-import { useEffect, useState } from 'react'
 import { supabase } from '../../supabase'
 import {v4 as uuid} from 'uuid'
-import { useRemoteEvents } from '../../contexts/RemoteEventProvider';
-
 
 export const Transactions = () => {
 
-    const getTxByStatus = async (status) => {
-
-        let {data, error} = await supabase
-            .from('transactions')
-            .select("*")
-            .eq('status', status)
-            .eq('processed', false)
-            .order("id", { ascending: true })
-        if (error) console.log('error - ', error)
-        if (data.length > 0) {
-            return data
-        } else {
-            return null
-        }
-    };
 
     const getStateByID = async (tx) => {
 
@@ -90,21 +72,6 @@ export const Transactions = () => {
             return null
         }
     }
-
-    const getCurrentBalanceByUserID = async (id) => {
-
-        let {data, error} = await supabase
-            .from('current_balance')
-            .select("*")
-            .eq('user_id', id)
-            .single()
-        if (error) console.log('getCurrentBalanceByUserID - error ', error)
-        if (data) {
-            return data
-        } else {
-            return null
-        }
-    };
 
 
     const createTransactionWrapper = async (transaction, tx_detail, tx_status, current_tx, future_tx, payment=false) => {

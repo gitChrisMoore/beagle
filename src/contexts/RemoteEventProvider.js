@@ -4,6 +4,7 @@ import { supabase } from '../supabase'
 const RemoteEventContext = createContext()
 
 export const RemoteEventProvider = ({ children }) => {
+
     const [message, setMessage] = useState();
     const subscriptions = supabase.getSubscriptions()
 
@@ -53,13 +54,13 @@ export const RemoteEventProvider = ({ children }) => {
 
     };
 
-    // useEffect(() => {
-    //     setupListener()
+    useEffect(() => {
+        setupListener()
 
-    //     return () => {
-    //         handleSubscriptionRemoval()
-    //       };
-    // });
+        return () => {
+            handleSubscriptionRemoval()
+          };
+    });
 
     const value = {
         message
