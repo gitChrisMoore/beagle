@@ -9,7 +9,7 @@ export const TransactionsAdapter = () => {
             password: password
         })
         if (error) throw new Error('TransactionsAdapter - signIn - ', error);
-        return user
+        return [user, session]
     };
 
     async function newTransaction(tx) {
@@ -96,6 +96,8 @@ export const TransactionsAdapter = () => {
                 tx.transaction_state = 2500;
                 tx.status = status
                 break;
+            default:
+                break;
         }
 
         if(status==='FINAL' && tx.type==="INVOICE") {
@@ -112,12 +114,12 @@ export const TransactionsAdapter = () => {
         // TODO Roll back transaction if fail
         if(detail) tx.transaction_detail = detail
         const [data, error] = await newTransaction(tx)
-        if(error) throw new Error('createTransaction - error - creating Tx, ', newTx)
+        if(error) throw new Error('createTransaction - error - creating Tx, ')
         return data 
     }
 
     const getTransactionsByStatus = async (status) => {
-        const session = supabase.auth.session()
+        // const session = supabase.auth.session()
         // console.log(session)
         let {data, error} = await supabase
             .from('transactions')

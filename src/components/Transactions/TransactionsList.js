@@ -8,11 +8,11 @@ import Divider from '@mui/material/Divider';
 import { Typography } from '@mui/material';
 import moment from 'moment';
 
-import { Transactions } from '../../providers/Transactions';
+import { TransactionsAdapter } from '../../providers/TransactionsAdapter';
 
 
 export function TransactionsList() {
-    const {getTransactionsByStatus} = Transactions();
+    const {getTransactionsByStatus} = TransactionsAdapter();
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate()
 

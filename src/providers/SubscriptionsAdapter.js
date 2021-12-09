@@ -7,8 +7,8 @@ export const SubscriptionsAdapter = () => {
             email: email,
             password: password
         })
-        if (error) throw new Error('TransactionsAdapter - signIn - ', error);
-        return user
+        if (error) throw new Error('SubscriptionsAdapter - signIn - ', error);
+        return [user, session]
     };
     
     const CreateSubscription = async (req) => {
@@ -30,6 +30,7 @@ export const SubscriptionsAdapter = () => {
             .insert(requestPaylod)
         if (error) console.log('error creating subscription : ', error.message)
         else if (data.length > 0) {
+            console.log(data)
             return data[0]
         } return null
     };

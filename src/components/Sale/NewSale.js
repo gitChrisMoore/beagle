@@ -10,12 +10,12 @@ import { Box,
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import {Transactions} from '../TxProcessor/Tansactions';
+import { TransactionsAdapter } from "../../providers/TransactionsAdapter";
 
 
 export function NewSale() {
     const navigate = useNavigate()
-    const createTransactionWrapperNew = Transactions();
+    const {createTransaction} = TransactionsAdapter();
 
     const user_idRef = useRef();
     const amountRef = useRef();
@@ -27,26 +27,17 @@ export function NewSale() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        
         const id = user_idRef.current.value
         const amount = amountRef.current.value
-
-        console.log('id___', id);
-        console.log('amount', amount);
 
         const transaction = {
             user_id: id,
             amount: amount,
             account_number: id,
             type: "INVOICE",
-            status: "PENDING_APPROVAL",
-            balance: 0.00,
-            prior_balance: 0.00,
-            source: "Web",
-            processed: false,
         }
 
-        const res = await createTransactionWrapperNew(transaction);        
+        const res = await createTransaction(transaction, 'PENDING_APPROVAL');        
         
         if(res.effective_date) {
             console.log(res)
