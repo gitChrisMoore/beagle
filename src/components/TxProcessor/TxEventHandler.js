@@ -54,7 +54,6 @@ const updateToProcessed = async (tx, flag) => {
         console.log("updateToProcessed - no results found")
         return null
     }
-    
 };
 
 async function createTx(tx, state, status) {
