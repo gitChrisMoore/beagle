@@ -30,7 +30,7 @@ export function BottomNavBar() {
         }}
       >
         <BottomNavigationAction label="Sales" to="/sale"  component={Link} icon={<PointOfSaleIcon />} />
-        <BottomNavigationAction label="Orders" to="/sale"  component={Link} icon={<ReceiptIcon />} />
+        <BottomNavigationAction label="Orders" to="/orders"  component={Link} icon={<ReceiptIcon />} />
         <BottomNavigationAction label="Profile" to="/profile"  component={Link} icon={<PersonIcon />} />
       </BottomNavigation>
     </Paper>

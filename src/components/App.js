@@ -8,6 +8,7 @@ import { BottomNavBar } from "./Scaffold/BottomNavBar"
 import { DevLogin } from "./User/DevLogin"
 
 import { ProfileContainer } from "./Profile/ProfileContainer"
+import { OrdersPage } from "./Orders/OrdersPage"
 import { SaleContainer } from "./Sale/SaleContainer"
 import { NewSale } from "./Sale/NewSale";
 import { SaleDetail } from "./Sale/SaleDetail";
@@ -31,6 +32,7 @@ function App() {
                   {/* Private Routes */}
                   <Route path='/' element={<PrivateRoute/>}>
                       <Route path='/sale' element={<SaleContainer/>} />
+                      <Route path='/orders' element={<OrdersPage/>} />
                       <Route path='/newsale' element={<NewSale/>} />
                       <Route path='/saledetail' element={<SaleDetail/>} />
                       <Route path='/profile' element={<ProfileContainer/>} />

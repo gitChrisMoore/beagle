@@ -1,6 +1,7 @@
-import { Box, Divider, Grid, Typography, ListItem, ListItemText } from "@mui/material";
+import { Box, Grid, Typography, ListItem, ListItemText } from "@mui/material";
 
 import { useAuth } from '../../contexts/Auth'
+import { PageHeading } from "../Common/PageHeading"; 
 
 export function ProfileContainer() {
     const { user, signOut } = useAuth()
@@ -15,14 +16,7 @@ export function ProfileContainer() {
                 sx={{ maxWidth: 'md' }}
                 margin='auto'
             >
-                <Grid item pt={3} pb={1}>
-                    <Typography variant="h5" fontWeight="bold" ml={2}>
-                        Profile
-                    </Typography>
-                </Grid>
-                <Grid item>
-                    <Divider />
-                </Grid>
+                <PageHeading title='Profile' />
 
                 <Grid item pt={3}>
                     <Typography variant="subtitle2" fontWeight="bold" ml={2}>
