@@ -19,7 +19,7 @@ describe('TransactionAdapter', function() {
     
 
     it('logs in as dev', async () => {
-        let user = await signIn(EMAIL, PASSWORD);
+        let [user] = await signIn(EMAIL, PASSWORD);
         expect(user.email).toBe(EMAIL)
     });
     

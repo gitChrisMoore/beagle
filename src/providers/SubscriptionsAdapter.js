@@ -30,7 +30,6 @@ export const SubscriptionsAdapter = () => {
             .insert(requestPaylod)
         if (error) console.log('error creating subscription : ', error.message)
         else if (data.length > 0) {
-            console.log(data)
             return data[0]
         } return null
     };

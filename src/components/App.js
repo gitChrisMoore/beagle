@@ -34,10 +34,11 @@ function App() {
                       <Route path='/newsale' element={<NewSale/>} />
                       <Route path='/saledetail' element={<SaleDetail/>} />
                       <Route path='/profile' element={<ProfileContainer/>} />
-                      <Route path='*' element={<SaleContainer/>} />
+                      
                   </Route>
                   
                   {/* Public Routes */}
+                  <Route path='*' element={<SaleContainer/>} />
                   <Route path='/devlogin' element={<DevLogin/>} />
                   
                 </Routes>
