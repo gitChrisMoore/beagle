@@ -12,7 +12,7 @@ export const UsersAdapter = () => {
         return [user, session]
     };
 
-    const useGetUserByID = async (id) => {
+    const getUserByID = async (id) => {
         let {data, error} = await supabase
             .from("public_users")
             .select("*")
@@ -33,16 +33,16 @@ export const UsersAdapter = () => {
         return data
     };
 
-    const testGetUserByID = async (id) => {
-        const [data] = await useGetUserByID(id);
+    // const testGetUserByID = async (id) => {
+    //     const [data] = await getUserByID(id);
 
-        return (
-            <div>{data.email}, {data.user_uid}</div>
-        );
-    };
+    //     return (
+    //         <div>{data.email}, {data.user_uid}</div>
+    //     );
+    // };
 
     return { 
-        useGetUserByID,
+        getUserByID,
         useGetUsers,
         signIn
     }

@@ -14,7 +14,7 @@ import { NewSale } from "./Sale/NewSale";
 import { SaleDetail } from "./Sale/SaleDetail";
 import { AuthProvider } from "../contexts/Auth"
 import { RemoteEventProvider } from "../contexts/RemoteEventProvider"
-
+import { QRScanner } from "./Sale/QRScanner";
 import { PrivateRoute } from "./Routes/PrivateRoute"
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
                       <Route path='/sale' element={<SaleContainer/>} />
                       <Route path='/orders' element={<OrdersPage/>} />
                       <Route path='/newsale' element={<NewSale/>} />
+                      <Route path='/qrscanner' element={<QRScanner/>} />
                       <Route path='/saledetail' element={<SaleDetail/>} />
                       <Route path='/profile' element={<ProfileContainer/>} />
                       

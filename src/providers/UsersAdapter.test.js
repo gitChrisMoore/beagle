@@ -1,7 +1,7 @@
 import {UsersAdapter} from "./UsersAdapter"
 
 const {signIn,
-        useGetUserByID,
+        getUserByID,
         useGetUsers} = UsersAdapter()
 
 const EMAIL = 'tmptx@gmail.com'
@@ -16,7 +16,7 @@ describe('UsersAdapter', function() {
     });
     
     it('return user information, when search by ID', async () => {
-        let user = await useGetUserByID(USER_UID)
+        let user = await getUserByID(USER_UID)
         
         expect(user.email).toBe(EMAIL)
 

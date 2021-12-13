@@ -7,15 +7,16 @@ import { Box,
     ListItem,
     ListItemText,
     ListItemIcon } from "@mui/material";
-import { useRef } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useRef, useState, useEffect } from "react";
+import { useLocation, useNavigate } from 'react-router-dom'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { TransactionsAdapter } from "../../providers/TransactionsAdapter";
-
 
 export function NewSale() {
     const navigate = useNavigate()
     const {createTransaction} = TransactionsAdapter();
+    const [customerID, setCustomerID] = useState('')
+    const { state } = useLocation();
 
     const user_idRef = useRef();
     const amountRef = useRef();
@@ -23,6 +24,19 @@ export function NewSale() {
     function handleClickBack() {
         navigate('/sale');
     }
+
+    function handleScanCustomer() {
+        navigate('/qrscanner');
+    }
+    
+    function onChangesetCustomerID(e) {
+        setCustomerID(e.target.value)
+    }
+    
+    useEffect(() => {
+        setCustomerID(state?.id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -93,12 +107,14 @@ export function NewSale() {
                                 variant="standard"
                                 fullWidth
                                 inputRef={user_idRef}
+                                value={customerID}
                                 required
+                                onChange={onChangesetCustomerID}
                             />
                         </Grid>
                         <Grid item xs={3} p={1} mt={1}>
                             <Button 
-                                // onClick={handleScanCustomer}
+                                onClick={handleScanCustomer}
                                 autoFocus
                                 fullWidth
                                 variant="contained"
